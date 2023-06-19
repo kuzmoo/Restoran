@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Dodaj konobara</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="text-center">Dodaj radnika</h1>
+  <hr>
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% endwith %}
+
+  <form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="ime_prezime">Ime i prezime</label>
+      <input type="text" class="form-control" id="ime_prezime" name="ime_prezime" required>
+    </div>
+
+    <div class="form-group">
+      <label for="pozicija">Pozicija</label>
+      <input type="text" class="form-control" id="pozicija" name="pozicija" required>
+    </div>
+
+    <div class="form-group">
+      <label for="slika">Slika</label>
+      <input type="file" class="form-control-file" id="slika" name="slika" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary button1">Dodaj</button>
+  </form>
+</div>
+{% endblock %}

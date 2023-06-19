@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Recenzija</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+<div class="container">
+  <h1 class="text-center">Ostavite recenziju</h1>
+
+  <form action="{{ url_for('recenzija') }}" method="POST">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% endwith %}
+    <div class="form-group">
+      <label for="name">Ime i prezime</label>
+      <input type="text" class="form-control" id="name" name="ime_prezime" placeholder="Unesite ime i prezime" value="{{ ime_prezime }}" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email adresa</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="Unesite svoju email adresu" value="{{ email }}" required>
+    </div>
+    <div class="form-group">
+      <label for="message">Poruka</label>
+      <textarea class="form-control" id="message" name="poruka" rows="3" placeholder="Unesite recenziju" required></textarea>
+    </div>
+    <div class="form-group">
+      <div class="rating">
+        <input type="radio" id="star5" name="ocjena" value="5">
+        <label for="star5" title="text"></label>
+        <input type="radio" id="star4" name="ocjena" value="4">
+        <label for="star4" title="text"></label>
+        <input checked="" type="radio" id="star3" name="ocjena" value="3">
+        <label for="star3" title="text"></label>
+        <input type="radio" id="star2" name="ocjena" value="2">
+        <label for="star2" title="text"></label>
+        <input type="radio" id="star1" name="ocjena" value="1">
+        <label for="star1" title="text"></label>
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary button1">Pošalji</button>
+    </div>
+  </form>  
+</div>
+
+</div>
+{% endblock %}

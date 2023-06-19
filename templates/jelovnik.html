@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Jelovnik</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="text-center">Jelovnik</h1>
+  <div class="row d-flex flex-wrap">
+    {% for jelo in jela %}
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card">
+        {% if jelo.slika %}
+          <img src="{{ url_for('static', filename='image/' + jelo.slika.decode('utf-8')) }}" class="card-img-top" alt="{{ jelo.naziv }}">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ jelo.naziv }}</h5>
+          <p class="card-text">{{ jelo.opis }}</p>
+        </div>
+        <div class="card-footer">
+          <p class="card-price">{{ jelo.cijena }} KM</p>
+          {% if 'korisnicko_ime' in session and session['admin'] == 1 %}
+          <a href="{{ url_for('izmijeni_jelo', jelo_id=jelo['id']) }}" class="btn btn-primary">Izmijeni</a>
+          <a href="{{ url_for('obrisi_jelo', jelo_id=jelo['id']) }}" class="btn btn-primary">Izbrisi</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

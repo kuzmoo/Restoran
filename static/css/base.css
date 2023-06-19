@@ -1,0 +1,317 @@
+.jumbotron {
+    position: relative;
+    background-image: url("{{ url_for('static', filename='image/1.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    
+  }
+
+  .jumbotron::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-image: url("{{ url_for('static', filename='image/1.jpg') }}");
+    filter: blur(5px);
+    z-index: -1;
+  }
+  
+
+  .text-color-animation {
+    animation: color-animation 5s infinite alternate;
+    animation-duration: 2s; /* Trajanje animacije */
+    animation-timing-function: ease-in-out; /* Brzo povećavanje i smanjivanje */
+    animation-direction: alternate; /* Smenjivanje napred-nazad */
+  }
+  
+  .text-color-animation1 {
+    animation: color-animation1 5s infinite alternate;
+    animation-duration: 3s; /* Trajanje animacije */
+    animation-timing-function: ease-in-out; /* Brzo povećavanje i smanjivanje */
+    animation-direction: alternate; /* Smenjivanje napred-nazad */
+  }
+  
+  @keyframes color-animation {
+    0% {
+      color: red;
+    }
+    50% {
+      color: blue;
+    }
+    100% {
+      color: green;
+    }
+    0% {
+        transform: scale(1); /* Početna veličina teksta */
+      }
+      50% {
+        transform: scale(1.2); /* Povećana veličina teksta */
+      }
+      100% {
+        transform: scale(1); /* Povrat na početnu veličinu teksta */
+      }
+    
+}
+  
+@keyframes color-animation1 {
+    0% {
+      color: yellow;
+    }
+    50% {
+      color: orange;
+    }
+    100% {
+      color: purple;
+    }
+    0% {
+        transform: scale(1); /* Početna veličina teksta */
+      }
+      50% {
+        transform: scale(1.2); /* Povećana veličina teksta */
+      }
+      100% {
+        transform: scale(1); /* Povrat na početnu veličinu teksta */
+      }
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container1-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .jumbotron1 {
+    background-size: cover;
+    background-position: center;
+  }
+
+    .card-img-top {
+    object-fit: cover;
+    height: 200px;
+  }
+
+
+  .button1 {
+    --color: #fdfdfd;
+    font-family: inherit;
+    display: inline-flex; /* Use flexbox */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    width: 8em;
+    height: 2.6em;
+    line-height: 2.5em;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color 0.5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+  }
+  
+  .button1:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+  }
+  
+  .button1:hover {
+    color: rgb(221, 0, 0);
+  }
+  
+  .button1:before {
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+  }
+  
+  .button1:hover:before {
+    top: -30px;
+    left: -30px;
+  }
+  
+  .button1:active:before {
+    background: #d45906;
+    transition: background 0s;
+  }
+
+
+  .checkbox-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .checkbox-label {
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .checkbox-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+  }
+  
+  .checkbox-label:hover .checkmark {
+    background-color: #ccc;
+  }
+  
+  .checkbox-label input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .checkbox-label input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .checkbox-label .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+
+  .rating {
+    display: inline-block;
+  }
+  
+  .rating input {
+    display: none;
+  }
+  
+  .rating label {
+    float: right;
+    cursor: pointer;
+    color: #ddd;
+  }
+  
+  .rating label:before {
+    content: "\2605";
+    font-size: 2rem;
+  }
+  
+  .rating input:checked ~ label,
+  .rating input:checked ~ label ~ label {
+    color: #FFD700;
+  }
+  
+
+  .restaurant-link {
+    font-weight: bold;
+    color: #ff0000; /* Primjer boje */
+  }
+  .restaurant-link {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  .restaurant-link {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .nav-item {
+    margin-right: 10px; 
+  }
+  .nav-link:hover {
+    color: #ff0000; 
+  }
+  .nav-link:hover {
+    font-size: 18px; /* Povećava veličinu teksta na hover */
+  }
+
+  .animated-bg {
+    background-image: url('/static/image/menu.jpg');
+    animation: backgroundScroll 20s infinite linear;
+  }
+  
+  @keyframes backgroundScroll {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: -2000px 0;
+    }
+  }
+  
+  .btn-primary {
+    background-color: #ff9800;
+    border-color: #ff9800;
+  }
+  
+  .btn-primary:hover {
+    background-color: #f57c00;
+    border-color: #f57c00;
+  }
+
+  .card {
+    opacity: 0;
+    animation: fade-in 1s ease-in forwards;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .restoran-slike img {
+    width: 1100px;
+    height: 600px; 
+    object-fit: cover;
+  }
+      
+  
+
+  
+  
+  
+  

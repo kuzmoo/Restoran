@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Kontakt</title>
+{% endblock  %}
+{% block content %}
+<div class="container">
+<section class="mb-4">
+    <h2 class="h1-responsive font-weight-bold text-center my-4">Kontaktirajte nas</h2>
+    <p class="text-center w-responsive mx-auto mb-5">Imate bilo kakvih pitanja? 
+        Ne ustručavajte se da nas kontaktirate direktno. Naš tim će vam se vratiti u roku od nekoliko sati da vam pomogne.</p>
+
+    <div class="row">
+        <div class="col-md-9 mb-md-0 mb-5">
+            <form id="contact-form" name="contact-form" action="{{ url_for('kontakt') }}" method="POST">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  <ul class="messages">
+                    {% for message in messages %}
+                      <li>{{ message }}</li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+                {% endwith %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="text" id="name" name="ime_prezime" class="form-control" value="{{ ime_prezime }}" required>
+                            <label for="ime_prezime" class="">Tvoje ime:</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <input type="email" id="email" name="email" class="form-control" value="{{ email }}" required>
+                            <label for="email" class="">Tvoj email:</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            <input type="text" id="subject" name="naslov" class="form-control" required>
+                            <label for="naslov" class="">Naslov:</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form">
+                            <textarea type="text" id="message" name="poruka" rows="2" class="form-control md-textarea" required></textarea>
+                            <label for="poruka">Tvoja poruka:</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center text-md-center">
+                    <button type="submit" class="btn btn-primary button1">Pošalji</button>
+                </div>
+                <div class="status"></div>
+            </form>
+            
+
+
+        </div>
+
+
+        <div class="col-md-3 text-center">
+            <ul class="list-unstyled mb-0">
+                <li><i class="fas fa-map-marker-alt fa-2x"></i>
+                    <p>Banja Luka, Beogradska 9, RS</p>
+                </li>
+
+                <li><i class="fas fa-phone mt-4 fa-2x"></i>
+                    <p>+ 387 66 458 77</p>
+                </li>
+
+                <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+                    <p>contact@restoran.com</p>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+
+</section>
+</div>
+{% endblock  %}

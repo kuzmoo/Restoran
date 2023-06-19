@@ -1,0 +1,165 @@
+
+
+{% block title %}<title>Login/Registracija</title>{% endblock %}
+
+{% block content %}
+
+<div class="wrapper">
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+        <style>
+            body {
+                background-image: url('{{ url_for('static', filename='image/pozadina1.jpg') }}');
+                background-size: cover;
+                background-position: center;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .text-container {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                white-space: nowrap;
+                animation: moveText 10s infinite linear;
+            }
+            
+            .text-container span {
+                display: inline-block;
+                margin-right: 50px;
+                color: white;
+                font-family: Arial, sans-serif;
+                font-size: 24px;
+                padding: 10px;
+                border-radius: 5px;
+            }
+            
+            @keyframes moveText {
+                0% {
+                    transform: translateX(100%);
+                }
+                100% {
+                    transform: translateX(-100%);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="text-container">
+            <span>Prijavi</span>
+            <span>se,</span>
+            <span>pogledaj</span>
+            <span>ponudu</span>
+            <span>i</span>
+            <span>rezerviši</span>
+            <span>svoje</span>
+            <span>mjesto</span>
+            <span>kod nas</span>
+            <span>i</span>
+            <span>okusi</span>
+            <span>najbolja</span>
+            <span>jela</span>
+        </div>
+        <div class="wrapper">
+            <div class="form-wrapper sign-up">
+                <form action="/register" method="POST">
+                    <h2>Registruj se</h2>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                      <ul class="flash-messages">
+                        {% for message in messages %}
+                          <li class="flash-message">{{ message }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                    {% endwith %}
+                    <div class="input-group">
+                        <input type="text" name="korisnicko_ime" required>
+                        <label for="">Korisničko ime</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="ime_prezime" required>
+                        <label for="">Ime i prezime</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" name="email" required>
+                        <label for="">Email</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" name="sifra" required>
+                        <label for="">Šifra</label>
+                    </div>
+            
+                    <button class="Btn" type="submit">
+                        <div class="sign">
+                            <svg viewBox="0 0 512 512">
+                                <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path>
+                            </svg>
+                        </div>
+                        <div class="text">Kreiraj</div>
+                    </button>
+                    <div class="sign-link">
+                        <p>Imate već nalog? <a href="#" class="signIn-link">Prijavi se</a></p>
+                    </div>
+                </form>
+            </div>            
+        </div>
+
+        <div class="form-wrapper sign-in">
+            <form action="/login" method="POST">
+                <h2>Prijavi se</h2>
+                {% if error %}
+                    <p class="error-message">{{ error }}</p>
+                {% endif %}
+                <div class="input-group">
+                    <input type="text" name="korisnicko_ime" required>
+                    <label for="">Korisničko ime</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="sifra" required>
+                    <label for="">Šifra</label>
+                </div>
+                <button class="Btn" type="submit">
+                    <div class="sign">
+                        <svg viewBox="0 0 512 512">
+                            <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path>
+                        </svg>
+                    </div>
+                    <div class="text">Prijavi se</div>
+                </button>
+                <div class="sign-link">
+                    <p>Nemate još nalog? <a href="#" class="signUp-link">Registruj se</a></p>
+                </div>
+            </form>
+        </div>
+        
+        
+    </body>
+    </html>
+</div>
+
+    <script>
+        const wrapper = document.querySelector('.wrapper');
+const signUpLink = document.querySelector('.signUp-link');
+const signInLink = document.querySelector('.signIn-link');
+
+signUpLink.addEventListener('click', () => {
+    wrapper.classList.add('animate-signIn');
+    wrapper.classList.remove('animate-signUp');
+});
+
+signInLink.addEventListener('click', () => {
+    wrapper.classList.add('animate-signUp');
+    wrapper.classList.remove('animate-signIn');
+});
+    </script>
+
+{% endblock %}

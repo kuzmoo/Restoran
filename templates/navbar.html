@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-md navbar-light bg-dark">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  <a href="/" class="navbar-brand restaurant-link"><i class="fas fa-store text-warning fa-2x"></i></a>
+  <button type="button" class="navbar-toggler bg-light" data-toggle="collapse" data-target="#nav" name="button">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="nav">
+      <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link text-light text-uppercase font-weight-bold px-3" href="/onama">O nama</a></li>
+          <li class="nav-item"><a class="nav-link text-light text-uppercase font-weight-bold px-3" href="/kontakt">Kontakt</a></li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {% if 'korisnicko_ime' in session and session['admin'] == 1 %}
+        <li class="nav-item">
+          <a class="nav-link text-light text-uppercase font-weight-bold px-3" href="/admin/panel">Admin Panel <i class="fas fa-thin fa-database" style="color: #ff7b00;"></i></a>
+        </li>
+        {% endif %}
+        {% if 'korisnicko_ime' in session %}
+        <li class="nav-item">
+            <span class="nav-link text-light text-uppercase font-weight-bold px-3">Dobro došli, {{ session['korisnicko_ime'] }} <i class="fas fa-solid fa-user fa-beat-fade" style="color: #ff7b00;"></i></span>
+        </li>
+        {% endif %}
+        <li class="nav-item">
+            <a class="nav-link text-light text-uppercase font-weight-bold px-3" href="/odjava">Odjavi se <i class="fas fa-chevron-right" style="color: #ff7b00;"></i></a>
+        </li>
+    </ul>
+    
+  </div>
+</nav>

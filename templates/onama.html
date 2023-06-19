@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>O nama</title>{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="text-center">O nama</h1>
+  <div class="restoran-info">
+    <h2 class="text-center"></h2>
+    <p class="text-center">Dobrodošli u naš restoran! Mi smo jedan od najpoznatijih restorana u gradu. Naša strast je pružiti izvanredno iskustvo našim gostima.</p>
+    <p class="text-center">U našem meniju možete pronaći širok izbor ukusnih jela i pića, pripremljenih sa svežim sastojcima i pažnjom prema detaljima.</p>
+    <p class="text-center">Naša ljubazna i profesionalna osoblja će se pobrinuti da se osećate dobrodošli i da vam pruže nezaboravno iskustvo tokom posete našem restoranu.</p>
+  </div>
+  <div class="restoran-slike">
+    <img src="{{ url_for('static', filename='image/slika1.jpg') }}" alt="Slika restorana">
+    <img src="{{ url_for('static', filename='image/slika2.jpg') }}" alt="Slika restorana">
+  </div>
+</div>
+{% endblock %}

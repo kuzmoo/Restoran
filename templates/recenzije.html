@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Prikaz recenzija</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Prikaz svih recenzija</h1>
+
+{% if recenzije %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Ime i prezime: </th>
+        <th>Email: </th>
+        <th>Poruka: </th>
+        <th>Ocjena: </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for recenzija in recenzije %}
+      <tr>
+        <td>{{ recenzija[0] }}</td>
+        <td>{{ recenzija[1] }}</td>
+        <td>{{ recenzija[2] }}</td>
+        <td>{{ recenzija[3] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>Nema dostupnih recenzija.</p>
+{% endif %}
+
+{% endblock %}

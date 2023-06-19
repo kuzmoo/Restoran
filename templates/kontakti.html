@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Kontakti</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Kontakti</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID: </th>
+      <th scope="col">Ime i prezime: </th>
+      <th scope="col">Email: </th>
+      <th scope="col">Naslov: </th>
+      <th scope="col">Poruka: </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for kontakt in kontakti %}
+    <tr>
+      <th scope="row">{{ kontakt[0] }}</th>
+      <td>{{ kontakt[1] }}</td>
+      <td>{{ kontakt[2] }}</td>
+      <td>{{ kontakt[3] }}</td>
+      <td>{{ kontakt[4] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

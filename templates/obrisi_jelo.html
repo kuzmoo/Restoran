@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="text-center">
+    <h1>Obrisi jelo</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% endwith %}
+    <p>Jeste li sigurni da želite obrisati ovo jelo?</p>
+    <form method="POST" action="{{ url_for('obrisi_jelo', jelo_id=jelo_id) }}" class="text-center">
+      <input type="submit" value="Obrisi">
+    </form>
+  </div>
+{% endblock %}

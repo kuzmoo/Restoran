@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Pocetna</title>
+{% endblock  %}
+
+{% block content %}
+
+<h1></h1>
+<div class="row justify-content-center">
+  <div class="col-md-4">
+    <div class="card text-center">
+      <div class="card-bg animated-bg">
+      <div class="card-body">
+        <h2 class="card-title">Jelovnik</h2>
+        <p class="card-text">Pogledajte naš raznovrstan jelovnik sa specijalitetima.</p>
+        <a href="/jelovnik" class="btn btn-primary">Jelovnik</a>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-center">
+      <div class="card-bg animated-bg">
+      <div class="card-body">
+        <h2 class="card-title">Rezervacije</h2>
+        <p class="card-text">Rezervišite svoje mjesto unaprijed kako biste osigurali svoje mjesto.</p>
+        <a href="/rezervacija" class="btn btn-primary">Rezervacije</a>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-center">
+      <div class="card-bg animated-bg">
+      <div class="card-body">
+        <h2 class="card-title">Recenzija</h2>
+        <p class="card-text">Želite da ocijenite restoran, možete ovdje.</p>
+        <a href="/recenzija" class="btn btn-primary">Recenzija</a>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-4 offset-md-4">
+  <div class="card text-center">
+    <div class="card-bg animated-bg">
+    <div class="card-body">
+      <h2 class="card-title">Naša usluga</h2>
+      <p class="card-text">Pogledajte koji sve radnici rade u našoj poslovnici.</p>
+      <a href="/radnici" class="btn btn-primary">Pregled</a>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+<style>
+    .card-body {
+      color: white;
+    }
+  
+    .card-title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  
+    .card-text {
+      font-size: 16px;
+    }
+  
+    .offset-md-4 {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+</style>
+
+{% endblock %}
+

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Izmijeni informacije</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="text-center">Izmijeni jelo</h1>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% endwith %}
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form method="POST" action="{{ url_for('izmijeni_jelo', jelo_id=jelo.id) }}" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="naziv">Naziv:</label>
+          <input type="text" id="naziv" name="naziv" value="{{ jelo.naziv }}" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="opis">Opis:</label>
+          <textarea id="opis" name="opis" class="form-control" required>{{ jelo.opis }}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="cijena">Cijena:</label>
+          <input type="number" id="cijena" name="cijena" value="{{ jelo.cijena }}" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="slika">Slika:</label>
+          <input type="file" id="slika" name="slika" class="form-control-file">
+        </div>
+        <div class="form-group text-center">
+          {% if jelo.slika %}
+          <img src="{{ url_for('static', filename='image/' + jelo.slika.decode('utf-8')) }}" alt="{{ jelo.naziv }}" width="200">
+          {% else %}
+          <p>Nema dostupne slike</p>
+          {% endif %}
+        </div>
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-primary button1">Izmijeni</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

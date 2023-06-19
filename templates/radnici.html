@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Radnici/Konobari</title>
+{% endblock  %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center">Naši radnici</h1>
+    <div class="row">
+        {% for radnik in radnici %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+              <img src="{{ url_for('static', filename='image/' + radnik[2].decode('utf-8')) }}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{ radnik[0] }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ radnik[1] }}</h6>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
